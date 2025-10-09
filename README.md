@@ -1,2 +1,2 @@
 # libray-api
-Project to study node js
+Project used to study node js

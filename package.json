@@ -1,0 +1,25 @@
+{
+  "name": "libray-api",
+  "version": "1.0.0",
+  "description": "Project to study node js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermesantos026/libray-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/guilhermesantos026/libray-api/issues"
+  },
+  "homepage": "https://github.com/guilhermesantos026/libray-api#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
