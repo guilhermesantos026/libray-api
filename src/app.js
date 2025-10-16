@@ -1,50 +1,16 @@
 import express from "express";
+import connectDb from "./config/dbConnect.js";
+import routes from "./routes/index.js"
+
+const connection = await connectDb();
+
+connection.on("error", (err) => {
+    console.error("connection error", err);
+});
+
+connection.once("open", () => {});
 
 const app = express();
-app.use(express.json());
-
-const books = []
-
-function findBookById(id) {
-    return books.findIndex(book => {
-        return book.id === Number(id)
-    });
-}
-
-app.get("/", (req, res) => {
-    res.status(200).send("Hello get");
-});
-
-app.get("/books", (req, res) => {
-    res.status(200).json(books);
-});
-
-app.get("/books/:id", (req, res) => {
-    const index = findBookById(req.params.id);
-    res.status(200).json(books[index]);
-});
-
-app.post("/books", (req, res) => {
-    books.push(req.body);
-    res.status(201).send("Book created");
-});
-
-app.put("/book/:id", (req, res) => {
-
-    const index = findBookById(req.params.id);
-
-    books[index].title = req.body.title;
-
-    res.status(200).json(books[index]);
-});
-
-app.delete("/book/:id", (req, res) => {
-
-    const index = findBookById(req.params.id);
-
-    books.splice(index, 1);
-
-    res.status(204).send();
-});
+routes(app);
 
 export default app;
